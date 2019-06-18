@@ -1,0 +1,18 @@
+body {
+  background-image: linear-gradient(to top, rgba(0, 45, 75, 0.4), rgba(0, 0, 0, 0.4)), url("../img/book-shelves-library-798053.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: fixed;
+  width: 100%;
+  height: auto; }
+  body h1 {
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+    height: 80px; }
+  body p {
+    text-align: center;
+    color: white;
+    font-size: 26px; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,18 @@
+@import "mixins";
+
+body {
+	@include coverimage("../img/book-shelves-library-798053.jpg");
+	h1 {
+		text-align: center;
+		color: white;
+		margin-top: 40px;
+		height: 80px;
+	}
+	p {
+		text-align: center;
+		color: white;
+		font-size: 26px;
+	}
+	width: 100%;
+	height: auto;
+}
