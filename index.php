@@ -10,7 +10,7 @@
 <body>
 	<h1>SuDocs</h1>
 	<p>Lifetime of your document depends upon the date of your exam</p>
-	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 40%; margin-left: 28%">
   		<ol class="carousel-indicators">
     		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -18,13 +18,13 @@
   		</ol>
   		<div class="carousel-inner">
     		<div class="carousel-item active">
-      			<img src="img/carousel/adult-blur-depth-of-field-1739840.jpg" class="d-block w-100" height="250" alt="photo1" style="margin-left: 5%; margin-right: 25%">
+      			<img src="img/carousel/caro1.jpg" class="d-block w-100" height="270" alt="photo1">
     		</div>
     		<div class="carousel-item">
-      			<img src="..." class="d-block w-100" alt="...">
+      			<img src="img/carousel/caro2.jpg" class="d-block w-100" height="270" alt="photo2">
     		</div>
     		<div class="carousel-item">
-      			<img src="..." class="d-block w-100" alt="...">
+      			<img src="img/carousel/adult-blur-depth-of-field-1739840.jpg" class="d-block w-100" height="270" alt="photo3">
     		</div>
   		</div>
   		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
