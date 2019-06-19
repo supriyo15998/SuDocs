@@ -3,12 +3,14 @@
 body {
 	@include coverimage("../img/book-shelves-library-798053.jpg");
 	h1 {
+		@include gradient();
 		text-align: center;
 		color: white;
 		margin-top: 40px;
 		height: 80px;
 	}
-	p {
+	h2 {
+		@include gradient();
 		text-align: center;
 		color: white;
 		font-size: 26px;
