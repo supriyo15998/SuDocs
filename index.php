@@ -1,3 +1,73 @@
+<?php 
+  function user_redirect($location) {
+    header($location);
+  }
+  function cr_redirect($location) {
+    header($location);
+  }
+?>
+<?php 
+  if($_SERVER['REQUEST_METHOD'] === "POST")
+    {
+      include('database/config.php');
+      if(empty($_POST['uname']) or empty($_POST['password']))
+      {
+        die("Something Went Wrong!!");
+      }
+      $username = mysqli_real_escape_string($conn, $_POST['uname']);
+      $password = mysqli_real_escape_string($conn, $_POST['password']);
+      $qry = "SELECT * FROM user WHERE username='$username' AND password='$password'";
+      $exec = mysqli_query($conn, $qry);
+      $count = mysqli_num_rows($exec);
+      //var_dump($count);
+      if($count==1)
+      {
+        //$row = mysqli_fetch_array($exec);
+        //$_SESSION['user'] = $row;
+        user_redirect('Location: user_dashboard.php?success');
+        exit;
+      }
+      else {
+        ?>
+          <script type="text/javascript">
+            alert('Invalid User!');
+            window.location.href = "index.php?failure";
+          </script>
+        <?php
+      }
+    }  
+?>
+<?php
+    if($_SERVER['REQUEST_METHOD'] === "POST")
+    {
+      include('database/config.php');
+      // if(empty($_POST['cr_uname']) or empty($_POST['cr_password']))
+      // {
+      //   die("Something Went horribly Wrong!!");
+      // }
+      $cr_username = mysqli_real_escape_string($conn, $_POST['cr_uname']);
+      $cr_password = mysqli_real_escape_string($conn, $_POST['cr_password']);
+      $qry = "SELECT * FROM cr WHERE username='$cr_username' AND password='$cr_password'";
+      $exec = mysqli_query($conn, $qry);
+      $count = mysqli_num_rows($exec);
+      //var_dump($count);
+      if($count==1)
+      {
+        //$row = mysqli_fetch_array($exec);
+        //$_SESSION['user'] = $row;
+        cr_redirect('Location: cr_dashboard.php?success');
+        exit;
+      }
+      else {
+        ?>
+          <script type="text/javascript">
+            alert('Invalid User!');
+            window.location.href = "index.php?failure";
+          </script>
+        <?php
+      }
+    }  
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +109,8 @@
 	<br><br>
 	<div class="container" style="width: 70%">
 		<center>
-  			<form action="index.php" method="POST">
+        <h2 style="width: 290px; height: 40px;">Login as a student</h2>
+      	<form action="index.php" method="POST">
     			<div class="row">
       				<div class="col-25">
         				<label style="margin-left: 50px;">Username</label>
@@ -62,6 +133,30 @@
     				</div>
     			</div>
   			</form>
+        <h2 style="width: 290px; height: 40px;">Login as a CR</h2>
+        <form action="index.php" method="POST">
+          <div class="row">
+              <div class="col-25">
+                <label style="margin-left: 50px;">Username</label>
+              </div>
+              <div class="col-75">
+                <input type="text" name="cr_uname" placeholder="Enter username" required="required">
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-25">
+                <label style="margin-left: 50px;">Password</label>
+              </div>
+              <div class="col-75">
+                <input type="password" name="cr_password" placeholder="Enter password" required="required">
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-75">
+                <input type="submit" value="Submit">
+            </div>
+          </div>
+        </form>
 		</center>
 	</div>
 	<br>
@@ -75,33 +170,3 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
-<?php
-  if($_SERVER['REQUEST_METHOD'] === "POST")
-  {
-    include('config.php');
-    if(empty($_POST['uname']) or empty($_POST['password']))
-    {
-      die("Something Went Wrong!!");
-    }
-    $username = mysqli_real_escape_string($conn, $_POST['uname']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
-    $qry = "SELECT * FROM user WHERE username='$username' AND password='$password'";
-    $exec = mysqli_query($conn, $qry);
-    $count = mysqli_num_rows($exec);
-    if($count >= 1)
-    {
-      $row = mysqli_fetch_array($exec);
-      $_SESSION['user'] = $row;
-      header('Location: user_dashboard.php?success');
-      exit;
-    }
-    else {
-      ?>
-        <script type="text/javascript">
-          alert('Invalid User!');
-          window.location.href = "index.php?failure";
-        </script>
-      <?php
-    }
-  }  
-?>
