@@ -1,12 +1,4 @@
 <?php 
-  function user_redirect($location) {
-    header($location);
-  }
-  function cr_redirect($location) {
-    header($location);
-  }
-?>
-<?php 
   if($_SERVER['REQUEST_METHOD'] === "POST")
     {
       include('database/config.php');
@@ -19,12 +11,11 @@
       $qry = "SELECT * FROM user WHERE username='$username' AND password='$password'";
       $exec = mysqli_query($conn, $qry);
       $count = mysqli_num_rows($exec);
-      //var_dump($count);
       if($count==1)
       {
-        //$row = mysqli_fetch_array($exec);
-        //$_SESSION['user'] = $row;
-        user_redirect('Location: user_dashboard.php?success');
+        $row = mysqli_fetch_array($exec);
+        $_SESSION['user'] = $row;
+        header('Location: user_dashboard.php?success');
         exit;
       }
       else {
@@ -35,38 +26,7 @@
           </script>
         <?php
       }
-    }  
-?>
-<?php
-    if($_SERVER['REQUEST_METHOD'] === "POST")
-    {
-      include('database/config.php');
-      // if(empty($_POST['cr_uname']) or empty($_POST['cr_password']))
-      // {
-      //   die("Something Went horribly Wrong!!");
-      // }
-      $cr_username = mysqli_real_escape_string($conn, $_POST['cr_uname']);
-      $cr_password = mysqli_real_escape_string($conn, $_POST['cr_password']);
-      $qry = "SELECT * FROM cr WHERE username='$cr_username' AND password='$cr_password'";
-      $exec = mysqli_query($conn, $qry);
-      $count = mysqli_num_rows($exec);
-      //var_dump($count);
-      if($count==1)
-      {
-        //$row = mysqli_fetch_array($exec);
-        //$_SESSION['user'] = $row;
-        cr_redirect('Location: cr_dashboard.php?success');
-        exit;
-      }
-      else {
-        ?>
-          <script type="text/javascript">
-            alert('Invalid User!');
-            window.location.href = "index.php?failure";
-          </script>
-        <?php
-      }
-    }  
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -134,7 +94,7 @@
     			</div>
   			</form>
         <h2 style="width: 290px; height: 40px;">Login as a CR</h2>
-        <form action="index.php" method="POST">
+        <form action="cr_login_process.php" method="POST">
           <div class="row">
               <div class="col-25">
                 <label style="margin-left: 50px;">Username</label>
