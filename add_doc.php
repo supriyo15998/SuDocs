@@ -25,8 +25,8 @@
 </head>
 <body>
 	<h1>CR Dashboard</h1>
-	<a href="logout_cr.php" class="btn btn-outline-warning" style="float: right">Logout</a>
 	<h2>Welcome <?php echo $_SESSION['cr']['name']; ?></h2>
+	<a href="logout_cr.php" class="btn btn-warning" style="float: right">Logout</a>
 	<div class="container-fluid bg">
 		<div class="row">
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
@@ -39,13 +39,14 @@
 					</div>
 					<div class="form-group">
 						<label>Document Title</label>
-						<input type="text" class="form-control" placeholder="Email">
+						<input type="text" class="form-control" placeholder="Document Title">
 					</div>
 					<div class="form-group">
 						<label>Upload Document</label>
-                        <!-- File upload here -->
+                        <input type="file">
 					</div>
 					<button type="submit" class="btn btn-success btn-block">Submit</button>
+					<a href="#" class="btn btn-success btn-block">Back</a>
 				</form>
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>

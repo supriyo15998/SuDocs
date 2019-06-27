@@ -1,4 +1,4 @@
-.bg{
+body{
     background: url('../img/form.jpg');
     background-repeat: no-repeat;
     width: 100%;
@@ -6,8 +6,9 @@
 }
 .form-container{
     border: 0px solid white;
-    padding: 50px 60px;
-    margin-top: 20vh;
+    padding: 50px 40px;
+    color: #192A56;
+    margin-top: 20px;
     -webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
     box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
