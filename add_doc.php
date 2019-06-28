@@ -31,21 +31,34 @@
 		<div class="row">
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
-				<form class="form-container">
+				<form class="form-container" action="submit_doc.php" method="POST" enctype="multipart/form-data">
                     <h2>Add New Document</h2>
 					<div class="form-group">
 						<label>Subject</label>
-						<!-- Drop down list here -->
+						<select name="subject">
+							<option autofocus>Select Subject</option>
+							<?php
+								include('database/config.php');
+								$qry = "SELECT name FROM subjects";
+								$exec = mysqli_query($conn,$qry);
+								while($row=mysqli_fetch_array($exec))
+								{
+									?>
+									<option value="<?php echo $row['name']; ?>"><?php echo $row['name']; ?></option>
+									<?php
+								}
+							?>
+						</select>
 					</div>
 					<div class="form-group">
-						<label>Document Title</label>
-						<input type="text" class="form-control" placeholder="Document Title">
+						<label style="color: #000;"><b>Document Title</b></label>
+						<input type="text" class="form-control" name="title" placeholder="Document Title" required>
 					</div>
 					<div class="form-group">
-						<label>Upload Document</label>
-                        <input type="file">
+						<label style="color:white">Upload Document</label>
+                        <input type="file" name="path">
 					</div>
-					<button type="submit" class="btn btn-success btn-block">Submit</button>
+					<input type="submit" class="btn btn-success btn-block" name="upload" value="Submit" required>
 					<a href="#" class="btn btn-success btn-block">Back</a>
 				</form>
 			</div>
