@@ -35,8 +35,8 @@
                     <h2>Add New Document</h2>
 					<div class="form-group">
 						<label>Subject</label>
-						<select name="subject">
-							<option autofocus>Select Subject</option>
+						<select name="subject" required>
+							<option autofocus value="">Select Subject</option>
 							<?php
 								include('database/config.php');
 								$qry = "SELECT name FROM subjects";
@@ -56,9 +56,9 @@
 					</div>
 					<div class="form-group">
 						<label style="color:white">Upload Document</label>
-                        <input type="file" name="path">
+                        <input type="file" name="path" required>
 					</div>
-					<input type="submit" class="btn btn-success btn-block" name="upload" value="Submit" required>
+					<input type="submit" class="btn btn-success btn-block" name="upload" value="Submit">
 					<a href="#" class="btn btn-success btn-block">Back</a>
 				</form>
 			</div>
